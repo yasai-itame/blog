@@ -3,7 +3,7 @@ import axios from 'axios'
 // import path from 'path'
 
 let idGet = async () => {
-  let page = await axios.get('http://yuukishouda.wp.xdomain.jp/wp-json/wp/v2/posts?page=1&per_page=100')
+  let page = await axios.get('wordpressのurl/wp-json/wp/v2/posts?page=1&per_page=100')
   let pageMax = page.headers['x-wp-totalpages']
   let idBox = []
   if (Number(pageMax) === 1) {
@@ -13,7 +13,7 @@ let idGet = async () => {
   } else {
     let result
     for (let i = 1; i <= Number(pageMax); i++) {
-      result = await axios.get(`http://yuukishouda.wp.xdomain.jp/wp-json/wp/v2/posts?page=${i}&per_page=100`)
+      result = await axios.get(`wordpressのurl/wp-json/wp/v2/posts?page=${i}&per_page=100`)
       result.data.forEach((v: any) => {
         idBox.push('/detail/' + v.id)
       })
@@ -23,7 +23,7 @@ let idGet = async () => {
 }
 
 let categoryGet = async () => {
-  let page = await axios.get('http://yuukishouda.wp.xdomain.jp/wp-json/wp/v2/categories?page=1&per_page=100')
+  let page = await axios.get('wordpressのurl/wp-json/wp/v2/categories?page=1&per_page=100')
   let pageMax = page.headers['x-wp-totalpages']
   let categoryBox = []
   if (Number(pageMax) === 1) {
@@ -33,7 +33,7 @@ let categoryGet = async () => {
   } else {
     let result
     for (let i = 1; i <= Number(pageMax); i++) {
-      result = await axios.get(`http://yuukishouda.wp.xdomain.jp/wp-json/wp/v2/categories?page=${i}&per_page=100`)
+      result = await axios.get(`wordpressのurl/wp-json/wp/v2/categories?page=${i}&per_page=100`)
       result.data.forEach((v: any) => {
         categoryBox.push('/category/' + v.id)
       })

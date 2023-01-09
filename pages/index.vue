@@ -49,7 +49,7 @@ let loadingStyle = {
 let totalPages = ref<number>(0)
 let countPages = ref<number>(1)
 let loadCheck = ref<Boolean>(false)
-const { data: results, pending, error, refresh } = await useFetch('http://yuukishouda.wp.xdomain.jp/wp-json/wp/v2/posts?page=1&per_page=10', {
+const { data: results, pending, error, refresh } = await useFetch('wordpressのurl/wp-json/wp/v2/posts?page=1&per_page=10', {
   onResponse({ response }) {
     totalPages.value = Number(response.headers.get('X-WP-TotalPages'))
   }
@@ -58,7 +58,7 @@ const { data: results, pending, error, refresh } = await useFetch('http://yuukis
 const loadData = async ($state) => {
   if (totalPages.value !== 1 && countPages.value < totalPages.value) {
     countPages.value++
-    const { data: results, pending, error, refresh } = await useAsyncData('posts', () => $fetch(`http://yuukishouda.wp.xdomain.jp/wp-json/wp/v2/posts?page=${countPages.value}&per_page=10`))
+    const { data: results, pending, error, refresh } = await useAsyncData('posts', () => $fetch(`wordpressのurl/wp-json/wp/v2/posts?page=${countPages.value}&per_page=10`))
     results.value.forEach((v) => {
       items.value.push(v)
     })

@@ -19,7 +19,7 @@ const route = useRoute()
 const { id } = route.params
 const { data: results, pending, error, refresh } = await useAsyncData(
   'posts',
-  () => $fetch(`http://yuukishouda.wp.xdomain.jp/wp-json/wp/v2/posts/${id}`)
+  () => $fetch(`wordpressのurl/wp-json/wp/v2/posts/${id}`)
 )
 const { $dayjs } = useNuxtApp()
 

@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import { ref, onMounted, computed, watch } from "vue"
 
-const { data: results } = await useFetch('http://yuukishouda.wp.xdomain.jp/wp-json/wp/v2/categories')
+const { data: results } = await useFetch('wordpressのurl/wp-json/wp/v2/categories')
 const route = useRoute()
 const { id } = route.params
 
